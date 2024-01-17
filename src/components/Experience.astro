@@ -1,0 +1,26 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIES = [
+  {
+    date: 'Enero 2022',
+    title: 'DoWhile Estudio',
+    description: 'Practicas en una empresa puntera en el desarrollo de branding web.',
+    link: 'https://www.dowhilestudio.com/es/inicio'
+  }, 
+  {
+    date: 'Septiembre 2021',
+    title: 'Instituto Jaume Viladoms',
+    description: 'Grado superior en desarrollo de aplicaciones web. (DAW)'
+  }, 
+]
+---
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">   
+  {
+    EXPERIENCIES.map(experiencie => (
+    <li class="mb-10 ms-4">
+      <ExperienceItem {...experiencie} />
+    </li>
+    ))
+  }               
+</ol>
+

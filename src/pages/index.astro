@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+
+import LinkedIcon from "../icons/Linkedin.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../icons/GitHub.astro";
+import MailIcon from "../icons/Mail.astro";
+import BriefCaseIcon from "../icons/BriefCase.astro";
+import CodeIcon from "../icons/CodeIcon.astro";
+import Contacto from "../components/Contacto.astro";
+import MessageIcon from "../icons/MessageIcon.astro";
+---
+
+<Layout
+  title="Portfolio de Jhersonnpa - Desarrollador y Programador Web."
+  description="Contrata a Jherson Pabon para crear tu aplicación web o móvil. Desarrollador Web."
+>
+  <main class="px-2">
+    <SectionContainer
+      id="sobremi"
+      class="py-6 pb-6 md:py-22 md:pb-10 lg:py-44 lg:pb-20"
+    >
+      <h1
+        class="text-white text-bold text-xl md:text-4xl lg:text-5xl flex flex-row gap-x-4 pb-6 lg:pb-10 text-pretty"
+      >
+        <p>Hey, soy Jherson 👋</p>
+        <a
+          href="https://www.linkedin.com/in/jherson-navir-pabon-amargant-792463207/"
+          target="_blank"
+          class="flex justify-center items-center"
+          rel="noopener"><Badge>Disponible para trabajar</Badge></a
+        >
+      </h1>
+      <h2
+        class="text-md lg:text-2xl text-semibold opcacity-80 text-wrap max-w-[700px]"
+      >
+        <span
+          >Desarrollador web, actualmente estoy complementando mi educación con
+          cursos autodidactas y diseñando y desarrollando sitios webs para
+          clientes.</span
+        ><span class="text-indigo-400/70"> De Barcelona, España.</span>
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill
+          href="https://www.linkedin.com/in/jherson-navir-pabon-amargant-792463207/"
+        >
+          <LinkedIcon class="size-4 lg:size-6" /> Linkedin
+        </SocialPill>
+        <SocialPill href="https://github.com/Jhersonnpa">
+          <GitHubIcon class="size-4 lg:size-6" /> Github
+        </SocialPill>
+        <SocialPill href="mailto:jhersonnpa@gmail.com">
+          <MailIcon class="size-4 lg:size-6" /> Mail
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+        <BriefCaseIcon class="size-7" /> Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+        <CodeIcon class="size-7" /> Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="contacto">
+      <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+        <MessageIcon class="size-7" /> Contacto
+      </h2>
+      <Contacto />
+    </SectionContainer>
+  </main>
+</Layout>
+
+<style></style>

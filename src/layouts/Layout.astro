@@ -1,0 +1,103 @@
+---
+import "@fontsource-variable/onest";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init("Oz8FxF9R0jkVSvOeR");
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document
+          .getElementById("contact-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // generate a five digit number for the contact_number variable
+            this.contact_number.value = (Math.random() * 100000) | 0;
+            // these IDs from the previous steps
+            emailjs.sendForm("service_c8f9cpd", "template_4tvwzx8", this).then(
+              function () {
+                const success = document.getElementById("success");
+                success.classList.remove("hidden");
+                document.getElementById("contact-form").reset();
+                setTimeout(() => {
+                  success.classList.add("hidden");
+                }, 5000);
+                console.log("SUCCESS!");
+              },
+              function (error) {
+                const e = document.getElementById("error");
+                success.classList.remove("hidden");
+                
+                setTimeout(() => {
+                  e.classList.add("hidden");
+                }, 5000);
+                console.log("FAILED...", error);
+              }
+            );
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      class="absolute top-0 z-[-2] h-screen w-full bg-[#0A0A0A] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"
+  ></script>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: "Onest Variable", sans-serif;
+    scroll-behavior: scroll;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    scroll-behavior: scroll;
+    background: #0a0a0a;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+</style>
