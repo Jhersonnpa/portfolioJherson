@@ -23,6 +23,7 @@ const { description, title } = Astro.props;
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
@@ -39,6 +40,8 @@ const { description, title } = Astro.props;
           .getElementById("contact-form")
           .addEventListener("submit", function (event) {
             event.preventDefault();
+            const btn = document.getElementById("btnForm");
+            btn.innerHTML = `<i class='bx bx-loader-alt bx-spin' ></i>`
             // generate a five digit number for the contact_number variable
             this.contact_number.value = (Math.random() * 100000) | 0;
             // these IDs from the previous steps
@@ -47,18 +50,18 @@ const { description, title } = Astro.props;
                 const success = document.getElementById("success");
                 success.classList.remove("hidden");
                 document.getElementById("contact-form").reset();
+                btn.innerHTML = "Enviar";
                 setTimeout(() => {
                   success.classList.add("hidden");
-                }, 5000);
-                console.log("SUCCESS!");
+                }, 7000);
               },
               function (error) {
                 const e = document.getElementById("error");
                 success.classList.remove("hidden");
-                
+                btn.innerHTML = "Enviar";
                 setTimeout(() => {
                   e.classList.add("hidden");
-                }, 5000);
+                }, 7000);
                 console.log("FAILED...", error);
               }
             );
@@ -87,6 +90,7 @@ const { description, title } = Astro.props;
     font-family: "Onest Variable", sans-serif;
     scroll-behavior: smooth;
     color-scheme: dark light;
+    color: white;
   }
   body {
     display: flex;
