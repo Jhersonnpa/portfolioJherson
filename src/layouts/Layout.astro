@@ -85,19 +85,20 @@ const { description, title } = Astro.props;
   }
   html {
     font-family: "Onest Variable", sans-serif;
-    scroll-behavior: scroll;
+    scroll-behavior: smooth;
+    color-scheme: light dark;
   }
   body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    scroll-behavior: scroll;
+    scroll-behavior: smooth;
     background: #0a0a0a;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
-      scroll-behavior: auto;
+      scroll-behavior: smooth;
     }
   }
 </style>
